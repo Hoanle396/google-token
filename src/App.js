@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { gapi } from "gapi-script";
+import { useEffect } from "react";
+import { GoogleLogin } from "react-google-login";
 
 function App() {
+  useEffect(() => {
+    gapi.load("client:auth2", () => {
+      gapi.client.init({
+        clientId:
+          "970416655854-lshvdvota7og26upes5tij7n9vslke8g.apps.googleusercontent.com",
+        scope: "email",
+      });
+    });
+  }, []);
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GoogleLogin
+      clientId="970416655854-lshvdvota7og26upes5tij7n9vslke8g.apps.googleusercontent.com"
+      buttonText="Login"
+      onSuccess={responseGoogle}
+      onFailure={responseGoogle}
+      cookiePolicy={"single_host_origin"}
+    />
   );
 }
 
