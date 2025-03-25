@@ -45,7 +45,7 @@ function App() {
         onClick={() =>
           login({
             loginMethods: ["wallet"],
-            walletChainType: "solana-only",
+            walletChainType: "ethereum-and-solana",
             disableSignup: false,
           })
         }
