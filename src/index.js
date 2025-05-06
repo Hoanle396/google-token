@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { PrivyProvider } from '@privy-io/react-auth'
 import reportWebVitals from './reportWebVitals';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,8 +12,11 @@ root.render(
     <PrivyProvider
       appId='cm8o0imcd01vi70j0dkibyzyy'
       config={{}}
-    >
-      <App />
+    ><GoogleOAuthProvider
+     clientId={"487589515794-r535o9i6cm74dkjbaqjuqjvqvbssi6cr.apps.googleusercontent.com"}>
+
+        <App />
+      </GoogleOAuthProvider>
     </PrivyProvider>
   </React.StrictMode>
 );

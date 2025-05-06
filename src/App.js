@@ -1,4 +1,5 @@
 import { useLogin, usePrivy } from "@privy-io/react-auth";
+import { useGoogleLogin } from "@react-oauth/google";
 import { gapi } from "gapi-script";
 import { useEffect, useState } from "react";
 import { GoogleLogin } from "react-google-login";
@@ -54,6 +55,17 @@ function App() {
     setData(result);
   }
 
+  const handleLogin = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: async (codeResponse) => {
+      setData(codeResponse);
+    },
+
+    onError: (errorResponse) => {
+      console.log("Login Failed: res:", errorResponse);
+    }
+  });
+
   return (
     <>
       <GoogleLogin
@@ -78,8 +90,10 @@ function App() {
         type="number"
         value={limit}
         onChange={(e) => setLimit(Number(e.target.value))}
-        />
+      />
       <button onClick={gen}>Generate</button>
+      <button onClick={() => setData({})}>Clear</button>
+      <button onClick={() => handleLogin()}>Login</button>
       <ReactJson src={data} />
     </>
   );
