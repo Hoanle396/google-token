@@ -4,6 +4,7 @@ import { gapi } from "gapi-script";
 import { useEffect, useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import ReactJson from "react-json-view";
+import FacebookLogin from 'react-facebook-login';
 
 function App() {
   const [data, setData] = useState({});
@@ -94,6 +95,11 @@ function App() {
       <button onClick={gen}>Generate</button>
       <button onClick={() => setData({})}>Clear</button>
       <button onClick={() => handleLogin()}>Login</button>
+      <FacebookLogin
+        appId="1338626817399717"
+        autoLoad={true}
+        fields="name,email,picture"
+        callback={responseGoogle} />
       <ReactJson src={data} />
     </>
   );

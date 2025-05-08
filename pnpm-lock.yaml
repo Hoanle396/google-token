@@ -32,6 +32,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-facebook-login:
+        specifier: ^4.1.1
+        version: 4.1.1(react@18.3.1)
       react-google-login:
         specifier: ^5.2.2
         version: 5.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5484,6 +5487,11 @@ packages:
 
   react-error-overlay@6.1.0:
     resolution: {integrity: sha512-SN/U6Ytxf1QGkw/9ve5Y+NxBbZM6Ht95tuXNMKs8EJyFa/Vy/+Co3stop3KBHARfn/giv+Lj1uUnTfOJ3moFEQ==}
+
+  react-facebook-login@4.1.1:
+    resolution: {integrity: sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==}
+    peerDependencies:
+      react: ^16.0.0
 
   react-google-login@5.2.2:
     resolution: {integrity: sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g==}
@@ -13855,6 +13863,10 @@ snapshots:
       scheduler: 0.23.2
 
   react-error-overlay@6.1.0: {}
+
+  react-facebook-login@4.1.1(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-google-login@5.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
