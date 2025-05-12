@@ -99,6 +99,7 @@ function App() {
 			<button onClick={() => handleLogin()}>Login</button>
 			<FacebookLogin appId="1402015690993283" callback={responseGoogle} />
 			<SpotifyAuth
+        redirectUri="https://dev-domain.site"
 				clientID="4c6364eb76594341b413c786abbeb071"
 				scopes={["user-read-email", "user-read-private"]} // Adjust scopes as needed
 				onAccessToken={responseGoogle}
