@@ -44,6 +44,9 @@ importers:
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.26.0(@babel/core@7.26.10))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.26.10))(@types/babel__core@7.20.5)(bufferutil@4.0.9)(eslint@8.57.1)(react@18.3.1)(type-fest@0.21.3)(utf-8-validate@5.0.10)
+      react-spotify-auth:
+        specifier: ^1.4.3
+        version: 1.4.3(react@18.3.1)
       web-vitals:
         specifier: ^2.1.4
         version: 2.1.4
@@ -5533,6 +5536,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  react-spotify-auth@1.4.3:
+    resolution: {integrity: sha512-XyIZD+frq+GOiNpFFi514/IhpqUUYArEeN1mB/qLhuyEe/omuoBTd36/lTNT5pf3qQ8I1u6tBabfwLy9G4Ch+g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0
 
   react-textarea-autosize@8.5.8:
     resolution: {integrity: sha512-iUiIj70JefrTuSJ4LbVFiSqWiHHss5L63L717bqaWHMgkm9sz6eEvro4vZ3uQfGJbevzwT6rHOszHKA8RkhRMg==}
@@ -13982,6 +13991,11 @@ snapshots:
       - webpack-cli
       - webpack-hot-middleware
       - webpack-plugin-serve
+
+  react-spotify-auth@1.4.3(react@18.3.1):
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.3.1
 
   react-textarea-autosize@8.5.8(@types/react@19.0.12)(react@18.3.1):
     dependencies:
