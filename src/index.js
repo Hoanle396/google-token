@@ -1,23 +1,32 @@
+import { PrivyProvider } from "@privy-io/react-auth";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
+import { WalletProvider } from "@solana/wallet-adapter-react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
-import { PrivyProvider } from "@privy-io/react-auth";
+import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<PrivyProvider appId="cm8o0imcd01vi70j0dkibyzyy" config={{}}>
-			<GoogleOAuthProvider
-				clientId={
-					"487589515794-r535o9i6cm74dkjbaqjuqjvqvbssi6cr.apps.googleusercontent.com"
-				}
-			>
-				<App />
-			</GoogleOAuthProvider>
-		</PrivyProvider>
+		<QueryClientProvider client={queryClient}>
+			<WalletProvider wallets={[new PhantomWalletAdapter()]}>
+				<PrivyProvider appId="cm8o0imcd01vi70j0dkibyzyy" config={{}}>
+					<GoogleOAuthProvider
+						clientId={
+							"487589515794-r535o9i6cm74dkjbaqjuqjvqvbssi6cr.apps.googleusercontent.com"
+						}
+					>
+						<App />
+					</GoogleOAuthProvider>
+				</PrivyProvider>
+			</WalletProvider>
+		</QueryClientProvider>
 	</React.StrictMode>,
 );
 

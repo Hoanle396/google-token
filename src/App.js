@@ -1,20 +1,33 @@
 import { useLogin, usePrivy } from "@privy-io/react-auth";
 import { useGoogleLogin } from "@react-oauth/google";
+import { PhantomWalletName } from "@solana/wallet-adapter-phantom";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { gapi } from "gapi-script";
 import { useEffect, useState } from "react";
+import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
 import ReactJson from "react-json-view";
-import FacebookLogin from "react-facebook-login";
 import { SpotifyAuth, SpotifyAuthListener } from "react-spotify-auth";
 import "react-spotify-auth/dist/index.css";
-
 function App() {
 	const [data, setData] = useState({});
 	const [limit, setLimit] = useState(1);
+	const [message, setMessage] = useState("");
 	const { getAccessToken, authenticated } = usePrivy();
+	const { wallet, connect, connected, signMessage, select } = useWallet();
 	const { login } = useLogin();
-
+	const sign = async () => {
+		const data = new TextEncoder().encode(message);
+		const signature = await signMessage(data);
+		setData({
+			wallet: wallet.readyState,
+			signature: btoa(String.fromCharCode(...signature)),
+			message: message
+		})
+	}
+	
 	useEffect(() => {
+		select(PhantomWalletName);
 		gapi.load("client:auth2", () => {
 			gapi.client.init({
 				clientId:
@@ -97,9 +110,16 @@ function App() {
 			<button onClick={gen}>Generate</button>
 			<button onClick={() => setData({})}>Clear</button>
 			<button onClick={() => handleLogin()}>Login</button>
+			<input
+				type="text"
+				value={message}
+				onChange={(e) => setMessage(e.target.value)}
+			/>
+			<button onClick={() => connect()}>{"Connect Wallet"}</button>
+			<button onClick={() => sign()}>Sign</button>
 			<FacebookLogin appId="1402015690993283" callback={responseGoogle} />
 			<SpotifyAuth
-        redirectUri="https://dev-domain.site"
+				redirectUri="https://dev-domain.site"
 				clientID="4c6364eb76594341b413c786abbeb071"
 				scopes={["user-read-email", "user-read-private"]} // Adjust scopes as needed
 				onAccessToken={responseGoogle}
