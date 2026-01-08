@@ -19,7 +19,7 @@ root.render(
 				<PrivyProvider appId="cm8o0imcd01vi70j0dkibyzyy" config={{}}>
 					<GoogleOAuthProvider
 						clientId={
-							"487589515794-r535o9i6cm74dkjbaqjuqjvqvbssi6cr.apps.googleusercontent.com"
+							"825033185742-pb7coi6q7s5kurufbfknjj23umudo8ei.apps.googleusercontent.com"
 						}
 					>
 						<App />
